@@ -1,0 +1,24 @@
+#+TITLE: Hosting beta-analytics.com
+#+DATE: Sun Oct 29 16:54:54 +0545 2017
+
+* Using gitlab as static hosting
+  Changes made: (just followed the refrence url, everything supereasy)
+    - add .gitlab-ci.yml
+
+    - create a dns entry on *Setting* > *Pages* > *New Domain*
+      | domains                |
+      |------------------------|
+      | www.beta-analytics.com |
+      | beta-analytics.com     |
+
+    - create a dns entry to use the gitlab static page server: 
+      #+BEGIN_EXAMPLE
+      mydomain.com A 52.167.214.135
+      #+END_EXAMPLE
+
+** caveat:
+   - no /https/, its a manual step till date (29 Oct 2017)
+
+* Refrences:
+  - [[https://about.gitlab.com/2016/04/07/gitlab-pages-setup/#add-gitlab-ci][Hosting on GitLab.com with GitLab Pages]]
+
