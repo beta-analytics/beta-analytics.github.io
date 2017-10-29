@@ -1,4 +1,4 @@
-image: scratch
+image: alpine
 pages:
   stage: deploy
   script:
