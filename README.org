@@ -73,11 +73,41 @@
     since [[https://about.gitlab.com/2018/02/21/pages-security-fix-rollout/][2018 March]] you have to verify ownership of your domain
     adding *TXT Records*
 
-** caveat
+** adding SSL
 
-   - no /https/, its a manual step till date (29 Oct 2017)
+   since its static pages hosted in gitlab, this has to be done
+   manually, may be use gitlab api if it allows!
+
+   #+BEGIN_EXAMPLE
+     # ubuntu
+     root@host # add-apt-repository ppa:certbot/certbot
+     root@host # apt-get update
+     root@host # apt-get install certbot
+
+     # arch
+     root@host # pacman -Sy certbot
+   #+END_EXAMPLE
+
+   alternative get lets encrypt form [[https://github.com/letsencrypt/letsencrypt][repo]]
+
+   #+BEGIN_EXAMPLE
+     root@host # certbot certonly -a manual -d beta-analytics.com
+   #+END_EXAMPLE
+
+   to generate certificate acme-challenge should be passed,
+   which gives,
+
+   =/etc/letsencrypt/live/<site>/fullchain.pem= Certificate
+   =/etc/letsencrypt/live/<site>/privkey.pem= Key
+
+   add or edit *Setting* > *Pages*
+
+   #+BEGIN_SRC sh :results output
+     curl -vX HEAD https://beta-analytics.com
+   #+END_SRC
 
 * Refrences
 
   - [[https://docs.gitlab.com/ce/user/project/pages/introduction.html][GitLab Pages]]
   - [[https://about.gitlab.com/2016/04/07/gitlab-pages-setup/#add-gitlab-ci][Hosting on GitLab.com with GitLab Pages]]
+  - [[https://about.gitlab.com/2016/04/11/tutorial-securing-your-gitlab-pages-with-tls-and-letsencrypt/][Tutorial: Securing your GitLab Pages with TLS and Let's Encrypt]]
