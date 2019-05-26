@@ -1,6 +1,41 @@
 #+TITLE: Hosting beta-analytics.com
 #+DATE: Sun Oct 29 16:54:54 +0545 2017
 
+* Migrating to github
+  Gitlab is cool, so is github with static page and ssl.
+
+  Necessary Changes
+  + add a new repo: github.com/beta-analytics/beta-analytics.github.io
+  + add CNAME file
+  + change cname to beta-analytics.github.io
+    #+begin_src bash :exports both :results drawer
+    dig beta-analytics.com CNAME
+    #+end_src
+    #+RESULTS:
+    :results:
+
+    ; <<>> DiG 9.14.2 <<>> beta-analytics.com CNAME
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 37333
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 4096
+    ;; QUESTION SECTION:
+    ;beta-analytics.com.		IN	CNAME
+
+    ;; ANSWER SECTION:
+    beta-analytics.com.	28	IN	CNAME	beta-analytics.github.io.
+
+    ;; Query time: 15 msec
+    ;; SERVER: 192.168.1.254#53(192.168.1.254)
+    ;; WHEN: Sun May 26 08:56:52 +0545 2019
+    ;; MSG SIZE  rcvd: 85
+
+    :end:
+  + enforce https on settings, so http redirects to https
+
 * pages.gitlab.io ip
 
   [[https://about.gitlab.com/2018/08/28/gitlab-pages-update/][2018-Aug-28]] DNS records from 52.167.214.135 to 35.185.44.232
