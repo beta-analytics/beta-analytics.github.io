@@ -1,7 +1,7 @@
 #+TITLE: Hosting beta-analytics.com
 #+DATE: Sun Oct 29 16:54:54 +0545 2017
 
-* We migrated to github 
+* We migrated to github
   Gitlab is cool, so is github with static page and ssl.
 
   #+begin_quote
@@ -79,7 +79,6 @@
   27  * * *
   28  * 232.44.185.35.bc.googleusercontent.com (35.185.44.232)  275.931 ms  273.191 ms
   #+end_example
-
 
 * COMMENT gitlab for static hosting
 ** .gitlab-ci.yml
